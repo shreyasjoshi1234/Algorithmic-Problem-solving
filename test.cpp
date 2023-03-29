@@ -1,19 +1,33 @@
-// Fibonacci Series using Recursion
-#include <bits/stdc++.h>
-using namespace std;
- 
-int fib(int n)
+#include<bits/stdc++.h>
+
+
+void find_min_remove(string &str,string &answer,int k)
 {
-    if (n <= 1)
-        return n;
-    return fib(n - 1) + fib(n - 2);
+    char curmin=str[0];
+    int curind=0;
+    for(int i=0;i<k;i++)
+    {
+        if(str[i]<curmin)
+        {
+            curind=i;
+            curmin=str[i];
+        }
+    }
+    answer.push_back(str[curmin]);
+    str.erase(curind,1);
+
 }
- 
-int main()
+string getTransformedString(string str, int k)
 {
-    int n = 9;
-    cout << fib(n);
-    getchar();
-    return 0;
+    string answer;
+    //Write your code here
+    while(str.size()>=k)
+    {
+        find_min_remove(str,answer,k);
+    }    
+    if(str.size()>0)
+    sort(str.begin(),str.end());
+    answer.append(str);
+    return answer;
+
 }
- 
