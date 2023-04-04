@@ -1,33 +1,28 @@
-#include<bits/stdc++.h>
-
-
-void find_min_remove(string &str,string &answer,int k)
-{
-    char curmin=str[0];
-    int curind=0;
-    for(int i=0;i<k;i++)
+lass Solution {
+public:
+    int minNumber(vector<int>& nums1, vector<int>& nums2) 
     {
-        if(str[i]<curmin)
+        map<int , int> map1;
+        map<int  , int > map2;
+        for(int i = 0  ; i < nums1.size() ; i++)
         {
-            curind=i;
-            curmin=str[i];
+            map1[nums1[i]]++;
         }
+        for(int i = 0  ; i < nums2.size() ; i++)
+        {
+            map2[nums2[i]]++;
+        }
+        for(auto &it : map1)
+        {
+            if(map2.find(it.first) != map2.end())
+            {
+                return it.first;
+            }
+        }
+        int max1 = *min_element(nums1.begin() , nums1.end());
+        int max2 = *min_element(nums2.begin() , nums2.end());
+        if(max1 < max2)
+            return max1 * 10 + max2;
+        return max2 * 10 + max1;
     }
-    answer.push_back(str[curmin]);
-    str.erase(curind,1);
-
-}
-string getTransformedString(string str, int k)
-{
-    string answer;
-    //Write your code here
-    while(str.size()>=k)
-    {
-        find_min_remove(str,answer,k);
-    }    
-    if(str.size()>0)
-    sort(str.begin(),str.end());
-    answer.append(str);
-    return answer;
-
-}
+};
