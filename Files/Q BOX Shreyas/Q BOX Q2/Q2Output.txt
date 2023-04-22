@@ -1,0 +1,20 @@
+Output 0
+16330152378
+Output 1
+42369245
+Output 2
+1054523
+Output 3
+2216520
+Output 4
+640255
+Output 5
+502771
+Output 6
+76988649
+Output 7
+17378752
+Output 8
+950375
+Output 9
+9218959
